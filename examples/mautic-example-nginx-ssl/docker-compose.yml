@@ -26,6 +26,8 @@ services:
       MYSQL_DATABASE: mautic
       MYSQL_USER: mautic
       MYSQL_PASSWORD: ${MYSQL_MAUTIC_PASSWORD}
+    volumes:
+      - mysql:/var/lib/mysql
 
   nginx:
     restart: unless-stopped
@@ -51,4 +53,5 @@ services:
 
 volumes:
   mautic-web:
+  mysql:
   ssl-certs:
