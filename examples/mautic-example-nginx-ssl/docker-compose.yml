@@ -1,6 +1,7 @@
 version: "3"
 services:
   mautic:
+    restart: unless-stopped
     image: mautic/mautic
     depends_on:
       - mysql
@@ -16,6 +17,7 @@ services:
       - mautic-web:/var/www/html
 
   mysql:
+    restart: unless-stopped
     image: mysql:5.6
     #image: percona/percona-server:5.7
     #command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
@@ -26,6 +28,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_MAUTIC_PASSWORD}
 
   nginx:
+    restart: unless-stopped
     image: nginx
     ports:
       - "443:443"
